@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import "./movie.css"
+import "./Movie.css"
 import { useParams } from "react-router-dom"
 
 const Movie = () => {
@@ -42,7 +42,7 @@ const Movie = () => {
                                 currentMovieDetail && currentMovieDetail.genres
                                     ?
                                     currentMovieDetail.genres.map(genre => (
-                                        <><span className="movie__genre" id={genre.id}>{genre.name}</span></>
+                                        <span key={genre.id} className="movie__genre" id={genre.id}>{genre.name}</span>
                                     ))
                                     :
                                     ""
@@ -69,7 +69,7 @@ const Movie = () => {
             <div className="movie__production">
                 {
                     currentMovieDetail && currentMovieDetail.production_companies && currentMovieDetail.production_companies.map(company => (
-                        <>
+                        <React.Fragment key={company.id}>
                             {
                                 company.logo_path
                                 &&
@@ -78,7 +78,7 @@ const Movie = () => {
                                     <span>{company.name}</span>
                                 </span>
                             }
-                        </>
+                        </React.Fragment>
                     ))
                 }
             </div>
