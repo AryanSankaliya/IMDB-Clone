@@ -13,6 +13,7 @@ const Home = () => {
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
             .then(res => res.json())
             .then(data => setPopularMovies(data.results))
+            .catch(err => console.error("Failed to fetch popular movies:", err))
     }, [])
 
     return (
