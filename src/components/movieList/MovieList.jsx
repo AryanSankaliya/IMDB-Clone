@@ -10,8 +10,11 @@ const MovieList = () => {
 
     useEffect(() => {
         const getData = () => {
-            fetch(`https://api.themoviedb.org/3/movie/${type ? type : "popular"}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
-                .then(res => res.json())
+            fetch(`/api/movie/${type ? type : "popular"}?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
+                .then(res => {
+                    if (!res.ok) throw new Error("API Proxy Error: " + res.status);
+                    return res.json();
+                })
                 .then(data => setMovieList(data.results))
                 .catch(err => console.error("Failed to fetch movie list:", err))
         }
