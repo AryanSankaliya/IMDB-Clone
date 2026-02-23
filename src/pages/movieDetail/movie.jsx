@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import "./Movie.css"
+import "./movie.css"
 import { useParams } from "react-router-dom"
 
 const Movie = () => {
